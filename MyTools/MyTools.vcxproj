@@ -132,7 +132,7 @@
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\HTML_TO_TXT.h" />
+    <ClInclude Include="..\include\EPUB_TO_TXT.h" />
     <ClInclude Include="..\include\LRC_TO_ASS.h" />
     <ClInclude Include="..\include\TXT_TO_TXT.h" />
     <ClInclude Include="..\include\TXT_TO_TXT_Delete_Space.h" />

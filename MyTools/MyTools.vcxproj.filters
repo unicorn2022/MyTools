@@ -26,7 +26,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\HTML_TO_TXT.h">
+    <ClInclude Include="..\include\EPUB_TO_TXT.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\include\LRC_TO_ASS.h">
