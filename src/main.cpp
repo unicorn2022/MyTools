@@ -41,7 +41,7 @@ int main() {
 
         // 对每一个file, 执行一次程序
         for (auto file : files) {
-            size_t pos = file.find(".");
+            size_t pos = file.find_last_of (".");
             string name = file.substr(0, pos);
             string target = name + "." + targetType;
 
