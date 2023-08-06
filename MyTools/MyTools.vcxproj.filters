@@ -24,6 +24,9 @@
     <ClCompile Include="..\src\LRC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SRT.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\EPUB_TO_TXT.h">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\include\TXT_TO_TXT_Delete_Space.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SRT_TO_ASS.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

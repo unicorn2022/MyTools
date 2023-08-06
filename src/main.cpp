@@ -3,6 +3,8 @@
 #include "../include/TXT_TO_TXT.h"
 #include "../include/TXT_TO_TXT_Delete_Space.h"
 #include "../include/LRC_TO_ASS.h"
+#include "../include/SRT_TO_ASS.h"
+
 
 #include <io.h>
 #include <cstring>
@@ -19,6 +21,9 @@ fileType: 指定的文件格式，如 .jpg
 */
 void getAllFiles(string path, vector<string>& files, string fileType);
 
+const string fileType = "srt";
+const string targetType = "ass";
+
 int main() {
     char source[500];
 
@@ -31,12 +36,11 @@ int main() {
         // EPUB_TO_TXT::Main();
         // TXT_TO_TXT::Main();
         // TXT_TO_TXT_Delete_Space::Main();
-        LRC_TO_ASS::Main();
+        // LRC_TO_ASS::Main();
+        SRT_TO_ASS::Main();
 
     } else {
         vector<string> files;
-        const string fileType = "lrc";
-        const string targetType = "ass";
         getAllFiles(source, files, fileType);
 
         // 对每一个file, 执行一次程序
@@ -48,7 +52,8 @@ int main() {
             // EPUB_TO_TXT::Main();
             // TXT_TO_TXT::Main();
             // TXT_TO_TXT_Delete_Space::Main();
-            LRC_TO_ASS::Main(file.c_str(), target.c_str());
+            // LRC_TO_ASS::Main(file.c_str(), target.c_str());
+            SRT_TO_ASS::Main(file.c_str(), target.c_str());
         }
     }
 

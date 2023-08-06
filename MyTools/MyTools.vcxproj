@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\LRC.cpp" />
+    <ClCompile Include="..\src\SRT.cpp" />
     <ClCompile Include="..\src\TXT.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\EPUB_TO_TXT.h" />
     <ClInclude Include="..\include\LRC_TO_ASS.h" />
+    <ClInclude Include="..\include\SRT_TO_ASS.h" />
     <ClInclude Include="..\include\TXT_TO_TXT.h" />
     <ClInclude Include="..\include\TXT_TO_TXT_Delete_Space.h" />
   </ItemGroup>
