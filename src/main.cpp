@@ -22,25 +22,45 @@ fileType: 指定的文件格式，如 .jpg
 */
 void getAllFiles(string path, vector<string>& files, string fileType);
 
-const string fileType = "mp3";
-const string targetType = "ass";
+bool Work();
 
 int main() {
-    char source[500];
+    while (Work());
+    return 0;
+}
 
-    printf("请输入源文件路径:\033[33m");
-    cin.getline(source, 500);
-    printf("\033[0m");
+bool Work() {
+    string source;
+    string fileType = "wav";
+    string targetType = "ass";
 
+    /* 输入信息 */
+    {
+        printf("请输入源文件路径, 输入~终止程序:\033[33m");
+        cin >> source;
+        printf("\033[0m");
 
-    if (strlen(source) == 0) {
+        if (source.compare("~") == 0) return false;
+
+        printf("请输入源文件类型:\033[33m");
+        cin >> fileType;
+        printf("\033[0m");
+
+        printf("请输入目标文件类型:\033[33m");
+        cin >> targetType;
+        printf("\033[0m");
+    }
+
+    
+    
+    if (source.size() == 0) {
         // EPUB_TO_TXT::Main();
         // TXT_TO_TXT::Main();
         // TXT_TO_TXT_Delete_Space::Main();
         // LRC_TO_ASS::Main();
         SRT_TO_ASS::Main();
-
-    } else {
+    }
+    else {
         vector<string> files;
         getAllFiles(source, files, fileType);
 
@@ -50,13 +70,13 @@ int main() {
             /* 重命名文件 */
             {
                 cnt++;
-                string command = "rename " + file + " " + to_string(cnt) + ".mp3";
+                string command = "rename " + file + " Kokomi_" + to_string(cnt) + ".mp3";
                 system(command.c_str());
             }
 
             /* 文件格式转换 */
             {
-                size_t pos = file.find_last_of (".");
+                size_t pos = file.find_last_of(".");
                 string name = file.substr(0, pos);
                 string target = name + "." + targetType;
 
@@ -68,9 +88,9 @@ int main() {
             }
         }
     }
-
-    return 0;
+    return true;
 }
+
 
 void getAllFiles(string path, vector<string>& files, string fileType) {
     // 文件句柄
