@@ -1,4 +1,7 @@
+[TOC]
+
 # MyTools
+
 自己写的一些格式转化的工具
 
 注：以下所有Main()函数均可指定source与target
@@ -66,7 +69,7 @@ TXT_TO_TXT::Main(source, target)
 1. 将**.txt**文件放到默认目录`../doc/`下，或者指定目录下
 2. **ctrl+F5**运行即可，如果是指定目录，则需要在控制台输入目录
 
-## 四、TXT中删除不规则换行
+## TXT中删除不规则换行
 
 ```c++
 TXT_TO_TXT_Delete_Space::Main(source, target);
@@ -76,3 +79,21 @@ TXT_TO_TXT_Delete_Space::Main(source, target);
 
 1. 将**.txt**文件放到默认目录`../doc/`下，或者指定目录下
 2. **ctrl+F5**运行即可，如果是指定目录，则需要在控制台输入目录
+
+# Python大法好
+
+> C++解决不了的，交给Python吧
+>
+> 有时候，选择比努力更加重要
+
+## download_media_from_har
+
+1. 在**谷歌浏览器**中，按F12，进入网络界面
+
+2. 依次点击角色的每一条语音，可以在网络界面看到，接收到了很多mp3文件
+
+3. 右击，**以HAR格式保存所有内容**，会下载一个har文件
+
+   <img src="AssetMarkdown/image-20231208223528520.png" alt="image-20231208223528520" style="zoom:80%;" />
+
+4. 将har文件移动至当前目录，python脚本会自动识别其中类型为`media`的文件，并将其下载到`download`文件夹中
