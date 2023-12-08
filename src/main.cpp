@@ -1,4 +1,4 @@
-#pragma warning(disable : 4996)
+ï»¿#pragma warning(disable : 4996)
 #include "../include/EPUB_TO_TXT.h"
 #include "../include/TXT_TO_TXT.h"
 #include "../include/TXT_TO_TXT_Delete_Space.h"
@@ -12,22 +12,23 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 
 /*
-path: Ö¸¶¨Ä¿Â¼
-files: ±£´æ½á¹û
-fileType: Ö¸¶¨µÄÎÄ¼ş¸ñÊ½£¬Èç .jpg
+path: æŒ‡å®šç›®å½•
+files: ä¿å­˜ç»“æœ
+fileType: æŒ‡å®šçš„æ–‡ä»¶æ ¼å¼ï¼Œå¦‚ .jpg
 */
 void getAllFiles(string path, vector<string>& files, string fileType);
 
-const string fileType = "srt";
+const string fileType = "mp3";
 const string targetType = "ass";
 
 int main() {
     char source[500];
 
-    printf("ÇëÊäÈëÔ´ÎÄ¼şÂ·¾¶:\033[33m");
+    printf("è¯·è¾“å…¥æºæ–‡ä»¶è·¯å¾„:\033[33m");
     cin.getline(source, 500);
     printf("\033[0m");
 
@@ -43,17 +44,28 @@ int main() {
         vector<string> files;
         getAllFiles(source, files, fileType);
 
-        // ¶ÔÃ¿Ò»¸öfile, Ö´ĞĞÒ»´Î³ÌĞò
+        // å¯¹æ¯ä¸€ä¸ªfile, æ‰§è¡Œä¸€æ¬¡ç¨‹åº
+        int cnt = 0;
         for (auto file : files) {
-            size_t pos = file.find_last_of (".");
-            string name = file.substr(0, pos);
-            string target = name + "." + targetType;
+            /* é‡å‘½åæ–‡ä»¶ */
+            {
+                cnt++;
+                string command = "rename " + file + " " + to_string(cnt) + ".mp3";
+                system(command.c_str());
+            }
 
-            // EPUB_TO_TXT::Main();
-            // TXT_TO_TXT::Main();
-            // TXT_TO_TXT_Delete_Space::Main();
-            // LRC_TO_ASS::Main(file.c_str(), target.c_str());
-            SRT_TO_ASS::Main(file.c_str(), target.c_str());
+            /* æ–‡ä»¶æ ¼å¼è½¬æ¢ */
+            {
+                size_t pos = file.find_last_of (".");
+                string name = file.substr(0, pos);
+                string target = name + "." + targetType;
+
+                // EPUB_TO_TXT::Main();
+                // TXT_TO_TXT::Main();
+                // TXT_TO_TXT_Delete_Space::Main();
+                // LRC_TO_ASS::Main(file.c_str(), target.c_str());
+                // SRT_TO_ASS::Main(file.c_str(), target.c_str());
+            }
         }
     }
 
@@ -61,20 +73,22 @@ int main() {
 }
 
 void getAllFiles(string path, vector<string>& files, string fileType) {
-    // ÎÄ¼ş¾ä±ú
+    // æ–‡ä»¶å¥æŸ„
     long long hFile = 0;
-    // ÎÄ¼şĞÅÏ¢
+    // æ–‡ä»¶ä¿¡æ¯
     struct _finddata_t fileinfo;
 
     string p;
 
     if ((hFile = _findfirst(p.assign(path).append("\\*" + fileType).c_str(), &fileinfo)) != -1) {
         do {
-            // ±£´æÎÄ¼şµÄÈ«Â·¾¶
+            // ä¿å­˜æ–‡ä»¶çš„å…¨è·¯å¾„
             files.push_back(p.assign(path).append("\\").append(fileinfo.name));
 
-        } while (_findnext(hFile, &fileinfo) == 0);  // Ñ°ÕÒÏÂÒ»¸ö£¬³É¹¦·µ»Ø0£¬·ñÔò-1
+        } while (_findnext(hFile, &fileinfo) == 0);  // å¯»æ‰¾ä¸‹ä¸€ä¸ªï¼ŒæˆåŠŸè¿”å›0ï¼Œå¦åˆ™-1
 
         _findclose(hFile);
     }
+
+    printf("path: %s, files count = %d\n", path.c_str(), files.size());
 }
