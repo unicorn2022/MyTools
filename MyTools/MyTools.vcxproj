@@ -131,13 +131,16 @@
     <ClCompile Include="..\src\SRT.cpp" />
     <ClCompile Include="..\src\TXT.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\EPUB_TO_TXT.h" />
     <ClInclude Include="..\include\LRC_TO_ASS.h" />
+    <ClInclude Include="..\include\main.h" />
     <ClInclude Include="..\include\SRT_TO_ASS.h" />
     <ClInclude Include="..\include\TXT_TO_TXT.h" />
     <ClInclude Include="..\include\TXT_TO_TXT_Delete_Space.h" />
+    <ClInclude Include="..\include\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
