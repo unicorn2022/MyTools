@@ -52,7 +52,6 @@ bool Work() {
     }
 
     
-    
     if (source.size() == 0) {
         // EPUB_TO_TXT::Main();
         // TXT_TO_TXT::Main();
@@ -70,7 +69,7 @@ bool Work() {
             /* 重命名文件 */
             {
                 cnt++;
-                string command = "rename " + file + " Kokomi_" + to_string(cnt) + ".mp3";
+                string command = "rename " + file + " Kokomi_" + to_string(cnt) + "." + targetType;
                 system(command.c_str());
             }
 
