@@ -120,7 +120,8 @@ void Utils::renameFiles() {
     for (auto file : files) {
         /* 重命名文件 */
         cnt++;
-        string command = "rename " + file + " " + prefix + "_" + to_string(cnt) + "." + targetType;
+        string command = "rename \"" + file + "\" " + prefix + "_" + to_string(cnt) + "." + targetType;
+        printf("command: %s\n", command.c_str());
         system(command.c_str());
     }
     SetConsoleColor(ConsoleColor::White);
