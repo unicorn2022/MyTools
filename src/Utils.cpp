@@ -110,19 +110,31 @@ void Utils::renameFiles() {
 
     string prefix;
     SetConsoleColor(ConsoleColor::Yellow);
-    printf("请输入文件前缀:");
+    printf("请输入文件前缀, null表示没有前缀:");
     SetConsoleColor(ConsoleColor::Red);
     cin >> prefix;
     SetConsoleColor(ConsoleColor::Clear);
+    if (prefix == "null") prefix = "";
 
 
     int cnt = 0;
+    SetConsoleColor(ConsoleColor::Yellow);
+    printf("请输入起始cnt:");
+    SetConsoleColor(ConsoleColor::Red);
+    cin >> cnt;
+    SetConsoleColor(ConsoleColor::Clear);
+
     for (auto file : files) {
         /* 重命名文件 */
-        cnt++;
-        string command = "rename \"" + file + "\" " + prefix + "_" + to_string(cnt) + "." + targetType;
+        string command;
+        // cnt: 000~999
+        if(cnt < 10) command = "rename \"" + file + "\" " + prefix + "00" + to_string(cnt) + "." + targetType;
+        else if(cnt < 100) command = "rename \"" + file + "\" " + prefix + "0" + to_string(cnt) + "." + targetType;
+        else command = "rename \"" + file + "\" " + prefix + to_string(cnt) + "." + targetType;
+
         printf("command: %s\n", command.c_str());
         system(command.c_str());
+        cnt++;
     }
     SetConsoleColor(ConsoleColor::White);
     printf("重命名完成, 共重命名 %d 个文件\n", files.size());
